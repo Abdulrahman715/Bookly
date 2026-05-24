@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_bookly_main/core/utils/asset_data/asset_data.dart';
+import 'package:my_bookly_main/features/splash/presentation/views/widgets/sliding_animation_text.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -8,14 +9,52 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody> {
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+
+  late Animation<Offset> slidingAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    slidingAnimation = Tween<Offset>(
+      begin: Offset(0, 10),
+      end: Offset.zero,
+    ).animate(animationController);
+
+    animationController.forward();
+
+    // animationController.addListener((){
+    //   setState(() {
+    //   });
+    // });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    animationController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children:[ 
+      children: [
         Image.network(AssetData.logo),
+        //!...................................
+        SizedBox(height: 20),
+        //!...................................
+        SlidingAnimationText(slidingAnimation: slidingAnimation),
       ],
     );
   }
