@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_bookly_main/core/utils/asset_data/asset_data.dart';
+import 'package:my_bookly_main/core/utils/asset_data.dart';
 import 'package:my_bookly_main/features/home/presentation/views/home_view.dart';
 import 'package:my_bookly_main/features/splash/presentation/views/widgets/sliding_animation_text.dart';
 
