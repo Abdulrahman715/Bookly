@@ -9,23 +9,63 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20 , vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomHomeAppBar(),
-          SizedBox(height: 10),
-          BooksListView(),
-          SizedBox(height: 10),
-          Text(
-            'Best Seller',
-            style: Styles.textStyle18,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomHomeAppBar(),
+                SizedBox(height: 10),
+                BooksListView(),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text('Best Seller', style: Styles.textStyle18),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
           ),
-          SizedBox(height: 20),
-          CustomBestSellerItem(),
-        ],
-      ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 4.0,
+              ),
+
+              child: CustomBestSellerItem(),
+            );
+          }, childCount: 10),
+        ),
+      ],
     );
   }
 }
+
+
+//! traditional way to build the home view body without using slivers
+// Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: 20 , vertical: 8),
+//       child: SingleChildScrollView(
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             CustomHomeAppBar(),
+//             SizedBox(height: 10),
+//             BooksListView(),
+//             SizedBox(height: 10),
+//             Text(
+//               'Best Seller',
+//               style: Styles.textStyle18,
+//             ),
+//             SizedBox(height: 20),
+//             CustomBestSellerListView(),
+//           ],
+//         ),
+//       ),
+//     );

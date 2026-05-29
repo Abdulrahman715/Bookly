@@ -71,7 +71,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   //! Navigate to home page with duration and simple transition Animation
   void navigateToHome() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       Get.to(
         HomeView(),
         transition: Transition.downToUp,
