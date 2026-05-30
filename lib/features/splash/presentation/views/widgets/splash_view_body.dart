@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_bookly_main/core/utils/app_router.dart';
 import 'package:my_bookly_main/core/utils/asset_data.dart';
-import 'package:my_bookly_main/features/home/presentation/views/home_view.dart';
 import 'package:my_bookly_main/features/splash/presentation/views/widgets/sliding_animation_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -72,11 +72,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
   //! Navigate to home page with duration and simple transition Animation
   void navigateToHome() {
     Future.delayed(Duration(seconds: 5), () {
-      Get.to(
-        HomeView(),
-        transition: Transition.downToUp,
-        duration: Duration(milliseconds: 250),
-      );
+      // Get.to(
+      //   HomeView(),
+      //   transition: Transition.downToUp,
+      //   duration: Duration(milliseconds: 250),
+      // );
+
+      if(!mounted) return;
+
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 }
