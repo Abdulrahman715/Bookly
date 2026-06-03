@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:my_bookly_main/core/utils/styles.dart';
 import 'package:my_bookly_main/features/book_details/presentation/views/widgets/book_details_app_bar.dart';
 import 'package:my_bookly_main/features/book_details/presentation/views/widgets/button_action.dart';
+import 'package:my_bookly_main/features/book_details/presentation/views/widgets/suggested_books_list_view.dart';
 import 'package:my_bookly_main/features/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:my_bookly_main/features/home/presentation/views/widgets/rating_row.dart';
 
@@ -33,11 +35,16 @@ class BookDetailsViewBody extends StatelessWidget {
               style: Styles.textStyle16.copyWith(color: Colors.grey),
             ),
             SizedBox(height: 15),
-            RatingRow(
-              mainAxisAlignment: MainAxisAlignment.center,
-            ),
+            RatingRow(mainAxisAlignment: MainAxisAlignment.center),
             SizedBox(height: 30),
             ButtonAction(),
+            SizedBox(height: 50),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('You can also like', style: Styles.textStyle16),
+            ),
+            SizedBox(height: 20),
+            SuggestedBooksListView(),
           ],
         ),
       ),
